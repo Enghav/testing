@@ -127,7 +127,7 @@ function Side() {
                 Add New Message
               </button>
               <ul
-                className="mt-2 translate-y-[-20px] w-[230px] list-decimal tran overflow-y-auto font-normal  font-['Inika'] text-white scrollable-container"
+                className="mt-2 translate-y-[-20px] w-[240px] list-decimal tran overflow-y-auto font-normal  font-['Inika'] text-white scrollable-container"
                 style={{ maxHeight: "330px" }}
               >
                 {tasks.map((task, index) => (
