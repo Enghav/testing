@@ -1,0 +1,13 @@
+/* Webkit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 0.5rem; /* Set the width of the scrollbar to zero */
+  }
+  .scrollable-container {
+    scrollbar-width: none;
+  }
+  
+.no-border {
+    border: none;
+    outline: none; /* This removes the outline as well when the input is focused */
+  }
+  
