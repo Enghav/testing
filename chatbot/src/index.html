@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sidebar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <script src="./tailwind3.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+
+<body class="bg-stone-300">
+  <span class="absolute text-white text-4xl top-5 left-4 cursor-pointer" onclick="Openbar()">
+    <button class="block md:hidden rounded focus:outline-none hover:bg-slate-500 p-3">
+        <div class="w-6 h-1 bg-gray-600 mb-1 rounded"></div>
+        <div class="w-6 h-1 bg-gray-600 mb-1 rounded"></div>
+        <div class="w-6 h-[3.5px] bg-gray-600 rounded"></div>
+    </button>
+  </span>
+  <div class="sidebar fixed top-0 bottom-0 lg:left-0 left-[-300px] duration-1000
+    p-2 w-[300px] overflow-y-auto text-center bg-gray-900 shadow h-screen">
+    <div class="text-gray-100 text-xl">
+      <div class="p-2.5 mt-1 flex items-center rounded-md ">
+        <h1 class="text-[15px]text-xl text-gray-200 font-bold pr-10">Side bar</h1>
+        <button class="ml-20  block md:hidden rounded focus:outline-none hover:bg-slate-500 p-3">
+            <i class="bi bi-x cursor-pointer lg:hidden text-xl" onclick="Openbar()"></i>
+        </button>
+      </div>
+        <div class="p-2.5 mt-1 flex items-center rounded-md ">Home</div>
+        <div class="p-2.5 mt-1 flex items-center rounded-md ">About</div>
+        <div class="p-2.5 mt-1 flex items-center rounded-md ">Project</div>
+        <div class="p-2.5 mt-1 flex items-center rounded-md ">Contact</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function dropDown() {
+      document.querySelector('#submenu').classList.toggle('hidden')
+      document.querySelector('#arrow').classList.toggle('rotate-0')
+    }
+    dropDown()
+
+    function Openbar() {
+      document.querySelector('.sidebar').classList.toggle('left-[-300px]')
+    }
+  </script>
+</body>
+
+</html>
