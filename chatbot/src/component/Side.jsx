@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactDOM from "react-dom";
 import "./hide-scrol.css";
 function Side() {
   const [isInputFocused, setIsInputFocused] = useState(false);
@@ -50,6 +51,31 @@ function Side() {
   const handleCancelLogout = () => {
     setIsConfirmOpen(false);
   };
+  const modal = (
+    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+      {/* Blurred background */}
+      <div className="logout-button-blur"></div>
+
+      {/* Confirmation dialog */}
+      <div className="bg-white p-4 rounded shadow-md relative z-10">
+        <p className="mb-4">Are you sure you want to logout?</p>
+        <div className="flex justify-end">
+          <button
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mr-2"
+            onClick={handleConfirmLogout}
+          >
+            Yes
+          </button>
+          <button
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded"
+            onClick={handleCancelLogout}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
   return (
     <div className="flex">
       <div
@@ -412,7 +438,7 @@ function Side() {
                     Option
                   </span>
                 </div>
-                <div>
+                <div >
                 <button className="flex" onClick={handleLogout}>
         <div
           className={`stroke-white cursor-pointer duration-500 ${
@@ -439,27 +465,11 @@ function Side() {
           Log out
         </span>
       </button>
-      {isConfirmOpen && (
-        <div className="fixed top-0 left-0 translate-x-[600px] translate-y-[-300px] w-full h-full flex items-center justify-center">
-          <div className="bg-white p-4 rounded shadow-md">
-            <p className="mb-4">Are you sure you want to logout?</p>
-            <div className="flex justify-end">
-              <button
-                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mr-2"
-                onClick={handleConfirmLogout}
-              >
-                Yes
-              </button>
-              <button
-                className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded"
-                onClick={handleCancelLogout}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {isConfirmOpen &&
+        ReactDOM.createPortal(
+          modal,
+          document.getElementById("modal-root") // Create a div with id="modal-root" in your HTML
+        )}
                 </div>
               </div>
             </div>

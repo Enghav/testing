@@ -8,8 +8,8 @@ function App() {
   const [open, setOpen] = useState(true);
   return (
    <div className=' h-screen flex overflow-y-hidden justify-between bg-slate-300 '>
-    {/* <Side/> */}
-     <Test/>
+    <Side/>
+     {/* <Test/> */}
     <div>
       {/* <Home/> */}
        <div>page</div>
