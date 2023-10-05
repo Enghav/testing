@@ -42,13 +42,13 @@ function Side() {
       <div
         className={`bg-gray-700 h-screen p-5 pt-8 ${
           open
-            ? "w-[250px] transition-width duration-300"
-            : "w-10 -left-[100px] "
+            ? "w-[250px]  "
+            : "w-[10px] translate-x-[-100px] "
         } duration-300 relative`}
       >
         <div
           className={` w-[30px] h-[30px]  bg-amber-200 flex justify-center items-center  rounded-full p-1  absolute -right-1 translate-x-[-15px] top-3 cursor-pointer  duration-500 ${
-            !open && "rotate-[360deg]" && "-right-[60px]"
+            !open && "rotate-[360deg]" && "translate-x-[60px]"
           }`}
           onClick={() => setOpen(!open)}
         >
@@ -365,7 +365,7 @@ function Side() {
                   </>
                 ))}
               </div>
-              <div className="w-[230px] h-[1px] bg-white"></div>
+              <div className={`w-[230px] h-[1px] bg-white ${ !open && "scale-0"}`}></div>
               <div className="grid gap-2 ">
                 <div className="flex ">
                   <div
@@ -430,11 +430,6 @@ function Side() {
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <h1 className={`${!open && "translate-x-[-35px]"} duration-500`}>
-          Hello
-        </h1>
       </div>
     </div>
   );
