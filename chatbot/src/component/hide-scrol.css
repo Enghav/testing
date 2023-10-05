@@ -10,4 +10,10 @@
     border: none;
     outline: none; /* This removes the outline as well when the input is focused */
   }
+.blur-bg {
+  width: 100px;
+  backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
+  background-color: rgba(0, 0, 0, 0.3); /* Adjust the background color and opacity as needed */
+}
+
   

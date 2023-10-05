@@ -1,118 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-function Test() {
-  const [open, setOpen] = useState(true);
-  const [submenuOpen, setSubmenuOpen] = useState(false);
-  const [tasks, setTasks] = useState(["New Chat"]);
-  const [editTaskIndex, setEditTaskIndex] = useState(null);
-  const [editedTask, setEditedTask] = useState("");
-  const [isInputFocused, setIsInputFocused] = useState(false);
-  const [pinnedMessages, setPinnedMessages] = useState([]); // State to store pinned messages
+import "./hide-scrol.css";
+function LogoutButton() {
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
-  const addMessage = () => {
-    setTasks([...tasks, "New Chat"]);
+  const handleLogout = () => {
+    setIsConfirmOpen(true);
   };
 
-  const editTask = (index) => {
-    setEditTaskIndex(index);
-    setEditedTask(tasks[index]);
+  const handleConfirmLogout = () => {
+    setIsConfirmOpen(false);
   };
 
-  const saveEditedTask = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index] = editedTask;
-    setTasks(updatedTasks);
-    setEditTaskIndex(null);
-  };
-
-  const deleteTask = (index) => {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
-    setTasks(updatedTasks);
-  };
-
-  const togglePinMessage = (index) => {
-    if (pinnedMessages.includes(index)) {
-      // If the message is already pinned, unpin it
-      const updatedPinnedMessages = pinnedMessages.filter((item) => item !== index);
-      setPinnedMessages(updatedPinnedMessages);
-    } else {
-      // If the message is not pinned, pin it
-      setPinnedMessages([...pinnedMessages, index]);
-    }
+  const handleCancelLogout = () => {
+    setIsConfirmOpen(false);
   };
 
   return (
     <div>
-      <button
-        className={` bg-gray-700 mt-2 hover:bg-slate-600 font-['Inika'] h-[40px] w-[230px] shadow  text-white py-2 px-4 rounded-md mb-4 duration-500 ${
-          !open && "scale-0"
-        }`}
-        onClick={addMessage}
-      >
-        Add New Message
+                <button className="flex" onClick={handleLogout}>
+        <div
+          className={`stroke-white cursor-pointer duration-500 ${
+            isConfirmOpen ? "rotate-[360deg]" : ""
+          }`}
+        >
+          <svg
+            width="20"
+            height="20"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+            />
+          </svg>
+        </div>
+        <span className="ml-2 font-normal font-['Inika'] text-white">
+          Log out
+        </span>
       </button>
-      <ul
-        className="mt-2 translate-y-[-20px] w-[240px] list-decimal tran overflow-y-auto font-normal  font-['Inika'] text-white scrollable-container"
-        style={{ maxHeight: "330px" }}
-      >
-        {tasks.map((task, index) => (
-          <li key={index} className=" w-[230px]">
-            <div className="">
-              {editTaskIndex === index ? (
-                <div className="flex items-center">
-                  {/* ... Input and editing logic here ... */}
-                </div>
-              ) : (
-                <div className="flex w-[230px] justify-between   hover:bg-gray-600 rounded-md  rounded-r-md p-2">
-                  <span className=" flex ">
-                    <div className="mr-2 stroke-white">
-                      {/* Pin icon */}
-                      <button
-                        className={`stroke-white hover:scale-125 ${
-                          pinnedMessages.includes(index)
-                            ? 'text-yellow-500' // Change to your desired pinned style
-                            : ''
-                        }`}
-                        onClick={() => togglePinMessage(index)}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          width="20"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 4v3m0 4h.01M12 17v1-7"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-
-                    <span
-                      className=" scrollable-container overflow-x-auto "
-                      style={{
-                        maxWidth: "130px",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {task}
-                    </span>
-                  </span>
-                  <div className="translate-x-[px]">
-                    {/* ... Edit and delete buttons ... */}
-                  </div>
-                </div>
-              )}
+      {isConfirmOpen && (
+        <div className="fixed top-0 left-0  w-screen  flex items-center justify-center">
+          <div className="bg-white p-4 rounded shadow-md">
+            <p className="mb-4">Are you sure you want to logout?</p>
+            <div className="flex justify-end">
+              <button
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mr-2"
+                onClick={handleConfirmLogout}
+              >
+                Yes
+              </button>
+              <button
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded"
+                onClick={handleCancelLogout}
+              >
+                Cancel
+              </button>
             </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+          </div>
+        </div>
+      )}
+                </div>
   );
 }
 
-export default Test;
+export default LogoutButton;
