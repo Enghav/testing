@@ -24,20 +24,23 @@ function Logout() {
       <div className="logout-button-blur"></div>
 
       {/* Confirmation dialog */}
-      <div className="bg-white p-4 rounded shadow-md relative z-10">
-        <p className="mb-4">Are you sure you want to logout?</p>
-        <div className="flex justify-end">
+      <div className="bg-gray-700 w-[300px] h-[170px] p-4 pt-2 grid gap-3 rounded shadow-md relative z-10">
+        <p className=" font-['Inika'] text-[22px] translate-x-[10px] text-white">Logout</p>
+        <div className='w-[270px]  bg-gray-300 h-[0.5px] translate-x-[-10px]'></div>
+        <div class=" text-white text-[12px] font-normal font-['Inika']">You have to login again in order to use the chatbot!!</div>
+        <div className="flex justify-start">
+          
           <button
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mr-2"
-            onClick={handleConfirmLogout}
-          >
-            Yes
-          </button>
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded"
+            className="bg-white hover:bg-gray-400 text-black mr-3 p-3  pt-1 pb-1 rounded"
             onClick={handleCancelLogout}
           >
-            Cancel
+            No
+          </button>
+          <button
+            className="bg-white hover:bg-red-600 text-red-500 rounded p-3 pt-1 pb-1 mr-2"
+            onClick={handleConfirmLogout}
+          >
+            Yes I'm sure
           </button>
         </div>
       </div>
