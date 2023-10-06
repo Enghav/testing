@@ -32,17 +32,17 @@ function NewMessage() {
       setTasks(updatedTasks);
     };
   return (
-    <div>
+    <div >
               <button
-                className={` bg-gray-700 mt-2 hover:bg-slate-600 font-['Inika'] h-[40px] w-[230px] shadow  text-white py-2 px-4 rounded-md mb-4 duration-500 ${
-                  !open && "scale-0"
+                className={` bg-gray-700 mt-2 hover:bg-slate-600 font-['Inika'] h-[40px] w-[230px] shadow  text-white py-2 px-4 rounded-md mb-4 duration-300 ${
+                  !open && "left-[-500px]"
                 }`}
                 onClick={addMessage}
               >
                 Add New Message
               </button>
               <ul
-                className="mt-2 translate-y-[-20px] w-[240px] list-decimal tran overflow-y-auto font-normal  font-['Inika'] text-white scrollable-container"
+                className=" mt-2 translate-y-[-20px] w-[240px] list-decimal tran overflow-y-auto font-normal  font-['Inika'] text-white scrollable-container"
                 style={{ maxHeight: "330px" }}
               >
                 {tasks.map((task, index) => (

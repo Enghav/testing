@@ -25,7 +25,7 @@ function Side() {
         } duration-300 relative`}
       >
         <div
-          className={` w-[30px] h-[30px]  bg-amber-200 flex justify-center items-center  rounded-full p-1  absolute -right-1 translate-x-[-15px] top-3 cursor-pointer  duration-500 ${
+          className={` w-[30px] h-[30px]  bg-amber-200 flex justify-center items-center  rounded-full p-1  absolute -right-1 translate-x-[-15px] top-3 cursor-pointer  duration-300 ${
             !open && "rotate-[360deg]" && "translate-x-[60px]"
           }`}
           onClick={() => setOpen(!open)}
